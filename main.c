@@ -148,9 +148,10 @@ double obvod(int pocetBodov, BOD *v) {
 
 int main()
 {
-    int n,pocet;
+    int n;
     
     scanf("%d", &n);
+    
     
     BOD *v;
     
@@ -160,11 +161,9 @@ int main()
         scanf("%d %d",&v[i].x,&v[i].y);
     }
     
-    count = n;
+    v = convexHull(v, &n);
     
-    v = convexHull(v, &pocet);
-    
-    double perimeter = obvod(count, v);
+    double perimeter = obvod(n, v);
     
     printf("%.3lf\n",perimeter);
     
