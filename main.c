@@ -5,6 +5,15 @@
 //  Created by Viktor Klíma on 16/12/18.
 //  Copyright © 2018 Viktor Klíma. All rights reserved.
 //
+//Program na vypočítanie Convexneho obalu (menimalny convexny set ktory obsahuje vsetky body).
+//Hlavna myslienka programu sa zaklada na Grahamovom algoritme, kde sa vytvor najprv spodna polka obalu, a potom vrchna.
+//
+//Standardny vstup obsahuje zapis súradnic bodov v 2d priestore. Na prvom riadku je cele císlo N (do 1000)
+//to je pocet bodov, a nasleduje N dvojic celych cisel: x-ova a y-ova suradnica i-teho bodu.
+//
+//Na standardný vystup vypise najmensiu dlzku obalu, ktora je potrebna na obalenie setu bodov zo vstupu, zaokruhlenu na tri desatinne miesta.
+//
+
 
 #include <stdio.h>
 #include <stdlib.h>
