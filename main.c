@@ -176,9 +176,7 @@ int main()
     
     v = convexHull(v, &pocet);
     
-    double perimeter = obvod(pocet, v);
-    
-    printf("%.3lf\n",perimeter);
+    printf("%.3lf\n",obvod(pocet, v));
     
     return 0;
 }
