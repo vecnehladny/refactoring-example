@@ -129,8 +129,10 @@ int main()
     
     BOD *v;
     
+    
+    v = (BOD *)malloc( n * sizeof(BOD));
     for(int i = 0;i<n;i++){
-        scanf("%d %d",v[i].x,&v[i].y);
+        scanf("%d %d",&v[i].x,&v[i].y);
     }
     
     count = n;
