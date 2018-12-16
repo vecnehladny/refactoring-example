@@ -76,6 +76,15 @@ BOD * Convex_Hull(BOD *v,  int *count){
     if(n > 1)
         qsort(&v[1], n - 1, sizeof(BOD), compare);
     m = 1;
+    
+    printf("\n######DEBUG######\n");
+    
+    printf("usporiadane vrcholy:\n");
+    for(int i=0;i<*count;i++){
+        printf("%d %d\n",v[i].x,v[i].y);
+    }
+    printf("##############\n");
+    
     for(i = 1; i < n; i++)
     {
         while((i < n - 1) && orientation(v[0], v[i], v[i + 1]) == 0)
@@ -97,6 +106,7 @@ BOD * Convex_Hull(BOD *v,  int *count){
         stack[++m] = v[i];
     }
     *count = n = ++m;
+    
     free(v);
     
     return stack;
@@ -135,9 +145,26 @@ int main()
         scanf("%d %d",&v[i].x,&v[i].y);
     }
     
+    
     count = n;
     
+    printf("\n######DEBUG######\n");
+    
+    printf("nacitane vrcholy:\n");
+    for(int i=0;i<count;i++){
+        printf("%d %d\n",v[i].x,v[i].y);
+    }
+    printf("##############\n");
+    
     v = Convex_Hull(v, &count);
+    
+    printf("\n######DEBUG######\n");
+    
+    printf("spravne vrcholy:\n");
+    for(int i=0;i<count;i++){
+        printf("%d %d\n",v[i].x,v[i].y);
+    }
+    printf("##############\n");
     
     double perimeter = getDistance(count, v);
     
