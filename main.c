@@ -47,7 +47,7 @@ int orientaciaBodu(BOD p, BOD q, BOD r){
         return 2;
     }
     
-}
+}//Funkcia vracia orientaciu troch za sebou iduch bodov: 0 = na jednej priamke, >0 = rotacia dolava, <0 = rotacia doprava
 
 int vektor(BOD p1, BOD p2){
     
