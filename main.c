@@ -55,7 +55,7 @@ double vzdialenostBodov(int xs, int xms,int ys,int yms){
     
 }
 
-int compare(void *vp1, void *vp2){
+int porovnanieBodov(void *vp1, void *vp2){
     
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
@@ -64,7 +64,14 @@ int compare(void *vp1, void *vp2){
     int orientacia = orientaciaBodu(p0, *p1, *p2);
     
     if (orientacia == 0){
-        return (vektor(p0, *p2) >= vektor(p0, *p1))? -1 : 1;
+        
+        if(vektor(p0, *p2) >= vektor(p0, *p1)){
+            return -1;
+        }
+        
+        else{
+            return 1;
+        }
     }
     
     if(orientacia == 2){
@@ -96,7 +103,7 @@ BOD * convexHull(BOD *v,  int *count){
     vymenBody(&v[0], &v[min]);
     p0 = v[0];
     if(n > 1)
-        qsort(&v[1], n - 1, sizeof(BOD), compare);
+        qsort(&v[1], n - 1, sizeof(BOD), porovnanieBodov);
     m = 1;
     for(i = 1; i < n; i++)
     {
