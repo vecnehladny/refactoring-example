@@ -66,10 +66,7 @@ int porovnanieBodov(const void *vp1,const void *vp2){
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
     
-    
-    int orientacia = orientaciaBodu(p0, *p1, *p2);
-    
-    if (orientacia == 0){
+    if (orientaciaBodu(p0, *p1, *p2) == 0){
         
         if(vektor(p0, *p2) >= vektor(p0, *p1)){
             return -1;
@@ -80,7 +77,7 @@ int porovnanieBodov(const void *vp1,const void *vp2){
         }
     }
     
-    if(orientacia == 2){
+    if(orientaciaBodu(p0, *p1, *p2) == 2){
         return -1;
     }
     
