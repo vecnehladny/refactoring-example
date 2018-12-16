@@ -84,7 +84,7 @@ int porovnanieBodov(const void *vp1,const void *vp2){
     else{
         return 1;
     }
-}
+}//porovna body podla ich orientacii
 
 BOD * convexHull(BOD *v,  int *pocet){
     
