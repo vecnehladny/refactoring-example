@@ -148,23 +148,21 @@ double obvod(int pocetBodov, BOD *v) {
 
 int main()
 {
-    int n,pocet;
+    int pocet;
     
-    scanf("%d", &n);
+    scanf("%d", &pocet);
     
     BOD *v;
     
+    v = (BOD *)malloc( pocet * sizeof(BOD));
     
-    v = (BOD *)malloc( n * sizeof(BOD));
-    for(int i = 0;i<n;i++){
+    for(int i = 0;i<pocet;i++){
         scanf("%d %d",&v[i].x,&v[i].y);
     }
     
-    count = n;
-    
     v = convexHull(v, &pocet);
     
-    double perimeter = obvod(count, v);
+    double perimeter = obvod(pocet, v);
     
     printf("%.3lf\n",perimeter);
     
