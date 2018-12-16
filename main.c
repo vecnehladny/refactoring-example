@@ -102,14 +102,20 @@ BOD * convexHull(BOD *v,  int *count){
     return stack;
 }
 
-double obvod(int npoints, BOD *v) {
-    double obvod = 0.0, dx, dy,x,y;
+double obvod(int pocetBodov, BOD *v) {
+    
+    double obvod = 0.0;
+    double x;
+    double y;
+    double dx;
+    double dy;
+    
     int i;
-    for (i = 0; i < npoints; ++i) {
+    for (i = 0; i < pocetBodov; ++i) {
         
-        x = v[i].x - v[(i+1)%npoints].x;
+        x = v[i].x - v[(i+1)%pocetBodov].x;
         
-        y = v[i].y - v[(i+1)%npoints].y;
+        y = v[i].y - v[(i+1)%pocetBodov].y;
         
         dx = pow(x,2);
         
