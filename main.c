@@ -156,7 +156,7 @@ double obvod(int pocetBodov, BOD *v) {
     }
     
     return obvod;
-}
+}//vypocita obvod z bodov, ktore vybrala funkcia convexHull
 
 //--------Definovanie Mainu
 
