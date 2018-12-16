@@ -29,7 +29,7 @@ void vymenBody(BOD *v1, BOD *v2) {
     *v1 = *v2;
     *v2 = temp;
 
-}
+}//vymena dvoch bodov
 
 int orientaciaBodu(BOD p, BOD q, BOD r){
     
