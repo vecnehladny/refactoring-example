@@ -21,6 +21,8 @@ typedef struct bod{
 
 BOD p0;
 
+//--------Definovanie Funkcii
+
 void vymenBody(BOD *v1, BOD *v2) {
     
     BOD temp = *v1;
@@ -150,6 +152,8 @@ double obvod(int pocetBodov, BOD *v) {
     
     return obvod;
 }
+
+//--------Definovanie Mainu
 
 int main()
 {
