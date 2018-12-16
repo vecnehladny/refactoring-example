@@ -55,7 +55,7 @@ double vzdialenostBodov(int xs, int xms,int ys,int yms){
     
 }
 
-int porovnanieBodov(void *vp1, void *vp2){
+int porovnanieBodov(const void *vp1,const void *vp2){
     
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
@@ -83,15 +83,15 @@ int porovnanieBodov(void *vp1, void *vp2){
     }
 }
 
-BOD * convexHull(BOD *v,  int *count){
-    int n = *count;
+BOD * convexHull(BOD *v,  int *pocet){
+    
     int ymin = v[0].y;
     int min = 0;
     int i;
     int m;
     BOD *stack;
     
-    for(i = 1; i < n; i++)
+    for(i = 1; i < *pocet; i++)
     {
         if((v[i].y < ymin) || ((v[i].y == ymin) && (v[i].x < v[min].x)))
         {
@@ -102,30 +102,31 @@ BOD * convexHull(BOD *v,  int *count){
     
     vymenBody(&v[0], &v[min]);
     p0 = v[0];
-    if(n > 1)
-        qsort(&v[1], n - 1, sizeof(BOD), porovnanieBodov);
+    if(*pocet > 1)
+        qsort(&v[1], *pocet - 1, sizeof(BOD), porovnanieBodov);
     m = 1;
-    for(i = 1; i < n; i++)
+    for(i = 1; i < *pocet; i++)
     {
-        while((i < n - 1) && orientaciaBodu(v[0], v[i], v[i + 1]) == 0)
+        while((i < *pocet - 1) && orientaciaBodu(v[0], v[i], v[i + 1]) == 0)
             i++;
         v[m++] = v[i];
     }
-    *count = n = m;
-    if(n < 3)
+    
+    *pocet = m;
+    if(*pocet < 3)
         return v;
-    stack = (BOD *)malloc(n * sizeof(BOD));
+    stack = (BOD *)malloc(*pocet * sizeof(BOD));
     stack[0] = v[0];
     stack[1] = v[1];
     stack[2] = v[2];
     m = 2;
-    for(i = 3; i < n; i++)
+    for(i = 3; i < *pocet; i++)
     {
         while(orientaciaBodu(stack[m-1], stack[m], v[i]) != 2)
             m--;
         stack[++m] = v[i];
     }
-    *count = n = ++m;
+    *pocet = ++m;
     free(v);
     
     return stack;
@@ -147,7 +148,7 @@ double obvod(int pocetBodov, BOD *v) {
 
 int main()
 {
-    int n,count;
+    int n,pocet;
     
     scanf("%d", &n);
     
@@ -161,7 +162,7 @@ int main()
     
     count = n;
     
-    v = convexHull(v, &count);
+    v = convexHull(v, &pocet);
     
     double perimeter = obvod(count, v);
     
