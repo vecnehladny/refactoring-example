@@ -102,6 +102,25 @@ BOD * Convex_Hull(BOD *v,  int *count){
     return stack;
 }
 
+double getDistance(int npoints, BOD *v) {
+    double distance = 0.0, dx, dy,x,y;
+    int i;
+    for (i = 0; i < npoints; ++i) {
+        
+        x = v[i].x - v[(i+1)%npoints].x;
+        
+        y = v[i].y - v[(i+1)%npoints].y;
+        
+        dx = pow(x,2);
+        
+        dy = pow(y,2);
+        
+        distance += sqrt(dx + dy);
+    }
+    
+    return distance;
+}
+
 int main()
 {
     int n;
