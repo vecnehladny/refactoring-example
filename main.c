@@ -10,10 +10,14 @@
 #include <stdlib.h>
 #include <math.h>
 
+//--------Definovanie Struktur
+
 typedef struct bod{
     int x;
     int y;
 }BOD;
+
+//--------Definovanie Globalnych premennych
 
 BOD p0;
 
@@ -113,6 +117,7 @@ BOD * convexHull(BOD *v,  int *pocet){
     }
     
     *pocet = m;
+    
     if(*pocet < 3)
         return v;
     stack = (BOD *)malloc(*pocet * sizeof(BOD));
