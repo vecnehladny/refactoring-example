@@ -85,7 +85,7 @@ BOD * Convex_Hull(BOD *v,  int *count){
     *count = n = m;
     if(n < 3)
         return v;
-    
+    stack = (BOD *)malloc(n * sizeof(BOD));
     stack[0] = v[0];
     stack[1] = v[1];
     stack[2] = v[2];
