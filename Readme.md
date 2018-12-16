@@ -17,7 +17,7 @@ Programy, použité pri práci sú
 * Xcode
 * Git Desktop*
 
-*program Git Desktop, bol použitý len pre vyzuálnu kontrolu vykonaných commitov(na commitovanie a všetku ostatnú prácu bol použitý Terminal).
+*program Git Desktop, bol použitý len pre vizuálnu kontrolu vykonaných commitov(na commitovanie a všetku ostatnú prácu bol použitý Terminal).
 
 
 ## Branche
