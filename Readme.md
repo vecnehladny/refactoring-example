@@ -1,4 +1,4 @@
-# [MIP] 3. Zadanie Refaktoring
+# [MIP] 3. Zadanie (Git+Refaktoring)
 
 Zadanie zamerané na prácu s verziovaním zdrojových kódov pomocou nástroja Git a na základné princípy refaktorinfu, teda zlepšovanie kvality zdrojového kódu so zachovaním pôvodnej funkcionality.
 
