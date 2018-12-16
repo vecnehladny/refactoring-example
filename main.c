@@ -94,10 +94,8 @@ BOD * convexHull(BOD *v,  int *pocet){
     int m;
     BOD *stack;
     
-    for(i = 1; i < *pocet; i++)
-    {
-        if((v[i].y < ymin) || ((v[i].y == ymin) && (v[i].x < v[min].x)))
-        {
+    for(i = 1; i < *pocet; i++){
+        if((v[i].y < ymin) || ((v[i].y == ymin) && (v[i].x < v[min].x))){
             ymin = v[i].y;
             min = i;
         }
@@ -105,30 +103,38 @@ BOD * convexHull(BOD *v,  int *pocet){
     
     vymenBody(&v[0], &v[min]);
     p0 = v[0];
-    if(*pocet > 1)
+    
+    if(*pocet > 1){
         qsort(&v[1], *pocet - 1, sizeof(BOD), porovnanieBodov);
+    }
+    
     m = 1;
-    for(i = 1; i < *pocet; i++)
-    {
+    
+    for(i = 1; i < *pocet; i++){
+        
         while((i < *pocet - 1) && orientaciaBodu(v[0], v[i], v[i + 1]) == 0)
             i++;
         v[m++] = v[i];
+        
     }
     
     *pocet = m;
     
-    if(*pocet < 3)
+    if(*pocet < 3){
         return v;
+    }
+    
     stack = (BOD *)malloc(*pocet * sizeof(BOD));
     stack[0] = v[0];
     stack[1] = v[1];
     stack[2] = v[2];
     m = 2;
-    for(i = 3; i < *pocet; i++)
-    {
+    for(i = 3; i < *pocet; i++){
+        
         while(orientaciaBodu(stack[m-1], stack[m], v[i]) != 2)
             m--;
         stack[++m] = v[i];
+        
     }
     *pocet = ++m;
     free(v);
