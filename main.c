@@ -24,6 +24,24 @@ void swap(BOD *v1, BOD *v2)
     *v2 = temp;
 }
 
+int compare(const void *vp1, const void *vp2)
+{
+    BOD *p1 = (BOD *)vp1;
+    BOD *p2 = (BOD *)vp2;
+    
+    
+    int o = orientation(p0, *p1, *p2);
+    if (o == 0)
+        return (distSq(p0, *p2) >= distSq(p0, *p1))? -1 : 1;
+    
+    if(o == 2){
+        return -1;
+    }
+    else{
+        return 1;
+    }
+}
+
 BOD * Convex_Hull(BOD *v,  int *count){
     int n = *count;
     int ymin = v[0].y;
