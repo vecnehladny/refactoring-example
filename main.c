@@ -17,11 +17,12 @@ typedef struct bod{
 
 BOD p0;
 
-void vymenBody(BOD *v1, BOD *v2)
-{
+void vymenBody(BOD *v1, BOD *v2) {
+    
     BOD temp = *v1;
     *v1 = *v2;
     *v2 = temp;
+
 }
 
 int orientaciaBodu(BOD p, BOD q, BOD r)
