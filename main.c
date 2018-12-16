@@ -40,6 +40,7 @@ int orientaciaBodu(BOD p, BOD q, BOD r){
     else {
         return 2;
     }
+    
 }
 
 int vektor(BOD p1, BOD p2){
@@ -51,21 +52,25 @@ int vektor(BOD p1, BOD p2){
 double vzdialenostBodov(int xs, int xms,int ys,int yms){
     
     return sqrt(pow(xs - xms,2) + pow(ys - yms,2));
+    
 }
 
-int compare(void *vp1, void *vp2)
-{
+int compare(void *vp1, void *vp2){
+    
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
     
     
-    int o = orientaciaBodu(p0, *p1, *p2);
-    if (o == 0)
-        return (vektor(p0, *p2) >= vektor(p0, *p1))? -1 : 1;
+    int orientacia = orientaciaBodu(p0, *p1, *p2);
     
-    if(o == 2){
+    if (orientacia == 0){
+        return (vektor(p0, *p2) >= vektor(p0, *p1))? -1 : 1;
+    }
+    
+    if(orientacia == 2){
         return -1;
     }
+    
     else{
         return 1;
     }
