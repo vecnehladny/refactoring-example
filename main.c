@@ -129,6 +129,7 @@ BOD * convexHull(BOD *v,  int *pocet){
     stack[1] = v[1];
     stack[2] = v[2];
     m = 2;
+    
     for(i = 3; i < *pocet; i++){
         
         while(orientaciaBodu(stack[m-1], stack[m], v[i]) != 2)
@@ -136,11 +137,12 @@ BOD * convexHull(BOD *v,  int *pocet){
         stack[++m] = v[i];
         
     }
+    
     *pocet = ++m;
     free(v);
     
     return stack;
-}
+}//hlavna funkcia, ktora usporiada body podla suradnic(podla x-ovej, ked sa x-ove suradnice rovnaju, tak podla y-ovej), dalej vyberie vhodne body obalu
 
 double obvod(int pocetBodov, BOD *v) {
     
