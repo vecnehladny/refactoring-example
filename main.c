@@ -27,12 +27,16 @@ void vymenBody(BOD *v1, BOD *v2) {
 
 int orientaciaBodu(BOD p, BOD q, BOD r){
     
-    int val = (int)(q.y - p.y) * (r.x - q.x) - ( int)(q.x - p.x) * (r.y - q.y);
-    if (val == 0) return 0;
+    int val = (int)(q.y - p.y) * (r.x - q.x) - (int)(q.x - p.x) * (r.y - q.y);
+    
+    if (val == 0){
+        return 0;
+    }
     
     if(val > 0){
         return 1;
     }
+    
     else {
         return 2;
     }
