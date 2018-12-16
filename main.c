@@ -123,15 +123,23 @@ double getDistance(int npoints, BOD *v) {
 
 int main()
 {
-    int n;
+    int n,count;
     
     scanf("%d", &n);
     
-    BOD v[n];
+    BOD *v;
     
     for(int i = 0;i<n;i++){
         scanf("%d %d",v[i].x,&v[i].y);
     }
+    
+    count = n;
+    
+    v = Convex_Hull(v, &count);
+    
+    double perimeter = getDistance(count, v);
+    
+    printf("%.3lf\n",perimeter);
     
     return 0;
 }
