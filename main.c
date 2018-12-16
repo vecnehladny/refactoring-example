@@ -53,7 +53,7 @@ int vektor(BOD p1, BOD p2){
     
     return (int)(p1.x - p2.x)*(p1.x - p2.x) + (int)(p1.y - p2.y)*(p1.y - p2.y);
     
-}
+}//vypocita vektor dvoch bodov
 
 double vzdialenostBodov(int xs, int xms,int ys,int yms){
     
