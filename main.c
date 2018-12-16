@@ -31,6 +31,11 @@ int orientation(BOD p, BOD q, BOD r)
     return (val > 0)? 1: 2;
 }
 
+int distSq(BOD p1, BOD p2)
+{
+    return (int)(p1.x - p2.x)*(p1.x - p2.x) + ( int)(p1.y - p2.y)*(p1.y     - p2.y);
+}
+
 int compare(const void *vp1, const void *vp2)
 {
     BOD *p1 = (BOD *)vp1;
