@@ -15,6 +15,17 @@ typedef struct bod{
     int y;
 }BOD;
 
+BOD * Convex_Hull(BOD *v,  int *count){
+    int n = *count;
+    int ymin = v[0].y;
+    int min = 0;
+    int i;
+    int m;
+    BOD *stack;
+    
+    return stack;
+}
+
 int main()
 {
     int n;
