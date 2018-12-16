@@ -15,6 +15,15 @@ typedef struct bod{
     int y;
 }BOD;
 
+BOD p0;
+
+void swap(BOD *v1, BOD *v2)
+{
+    BOD temp = *v1;
+    *v1 = *v2;
+    *v2 = temp;
+}
+
 BOD * Convex_Hull(BOD *v,  int *count){
     int n = *count;
     int ymin = v[0].y;
@@ -22,6 +31,43 @@ BOD * Convex_Hull(BOD *v,  int *count){
     int i;
     int m;
     BOD *stack;
+    
+    for(i = 1; i < n; i++)
+    {
+        if((v[i].y < ymin) || ((v[i].y == ymin) && (v[i].x < v[min].x)))
+        {
+            ymin = v[i].y;
+            min = i;
+        }
+    }
+    
+    swap(&v[0], &v[min]);
+    p0 = v[0];
+    if(n > 1)
+        qsort(&v[1], n - 1, sizeof(BOD), compare);
+    m = 1;
+    for(i = 1; i < n; i++)
+    {
+        while((i < n - 1) && orientation(v[0], v[i], v[i + 1]) == 0)
+            i++;
+        v[m++] = v[i];
+    }
+    *count = n = m;
+    if(n < 3)
+        return v;
+    stack = (BOD *)malloc(n * sizeof(BOD));
+    stack[0] = v[0];
+    stack[1] = v[1];
+    stack[2] = v[2];
+    m = 2;
+    for(i = 3; i < n; i++)
+    {
+        while(orientation(stack[m-1], stack[m], v[i]) != 2)
+            m--;
+        stack[++m] = v[i];
+    }
+    *count = n = ++m;
+    free(v);
     
     return stack;
 }
