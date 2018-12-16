@@ -59,7 +59,7 @@ double vzdialenostBodov(int xs, int xms,int ys,int yms){
     
     return sqrt(pow(xs - xms,2) + pow(ys - yms,2));
     
-}
+}//vypocita vzdialenost dvoch bodov z ich suradnic
 
 int porovnanieBodov(const void *vp1,const void *vp2){
     
