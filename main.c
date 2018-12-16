@@ -24,6 +24,13 @@ void swap(BOD *v1, BOD *v2)
     *v2 = temp;
 }
 
+int orientation(BOD p, BOD q, BOD r)
+{
+    int val = (int)(q.y - p.y) * (r.x - q.x) - ( int)(q.x - p.x) * (r.y - q.y);
+    if (val == 0) return 0;
+    return (val > 0)? 1: 2;
+}
+
 int compare(const void *vp1, const void *vp2)
 {
     BOD *p1 = (BOD *)vp1;
