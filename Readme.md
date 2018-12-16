@@ -26,12 +26,18 @@ Programy, použité pri práci sú
 
 v projekte sú požité 4 branche
 
-```
- master (default)
- develop (branch, v ktorom prebiehal vývoj programu)
- debug (branch, ktorý je vytvorený pred koncom branchu develop. Obsahu debugovacie vypisy pre kontrolu postupnosti programu)
- refactoring (branch, ktorý je vytvorený pred mergom branchu develop do master, v tomto branchi je spravený všetok refaktoring, ktorý je popísani podrobne v commit messagoch)
-```
+### master
+default
+
+### develop
+branch, v ktorom prebiehal vývoj programu.
+
+### debug
+branch, ktorý je vytvorený pred koncom branchu develop. Obsahu debugovacie vypisy pre kontrolu postupnosti programu
+
+### refactoring
+branch, ktorý je vytvorený pred mergom branchu develop do master, v tomto branchi je spravený všetok refaktoring, ktorý je popísani podrobne v commit messagoch
+
 
 ## Authors
 
