@@ -10,10 +10,16 @@
 #include <stdlib.h>
 #include <math.h>
 
+typedef struct bod{
+    int x;
+    int y;
+}BOD;
 
 int main()
 {
-  
+    int n;
+    
+    
     
     return 0;
 }
