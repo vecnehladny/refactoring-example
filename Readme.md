@@ -3,7 +3,7 @@
 Zadanie zamerané na prácu s verziovaním zdrojových kódov pomocou nástroja Git a na základné princípy refaktorinfu, teda zlepšovanie kvality zdrojového kódu so zachovaním pôvodnej funkcionality.
 
 
-### Kód
+### Programovací jazyk
 
 Kód pre spracovanie Gitom a ďalej refaktorovaný je v jazyku
 
@@ -44,6 +44,6 @@ branch, ktorý je vytvorený pred koncom branchu develop. Obsahu debugovacie vyp
 branch, ktorý je vytvorený pred mergom branchu develop do master, v tomto branchi je spravený všetok refaktoring, ktorý je popísani podrobne v commit messagoch
 ```
 
-## Authors
+## Autor
 
 * **Viktor Klíma**
