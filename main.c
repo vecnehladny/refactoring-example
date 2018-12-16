@@ -17,34 +17,34 @@ typedef struct bod{
 
 BOD p0;
 
-void vymenBody(BOD *v1, BOD *v2)
+void swap(BOD *v1, BOD *v2)
 {
     BOD temp = *v1;
     *v1 = *v2;
     *v2 = temp;
 }
 
-int orientaciaBodu(BOD p, BOD q, BOD r)
+int orientation(BOD p, BOD q, BOD r)
 {
     int val = (int)(q.y - p.y) * (r.x - q.x) - ( int)(q.x - p.x) * (r.y - q.y);
     if (val == 0) return 0;
     return (val > 0)? 1: 2;
 }
 
-int vzdialenostBodov(BOD p1, BOD p2)
+int distSq(BOD p1, BOD p2)
 {
     return (int)(p1.x - p2.x)*(p1.x - p2.x) + ( int)(p1.y - p2.y)*(p1.y     - p2.y);
 }
 
-int porovnanieBodov(const void *vp1, const void *vp2)
+int compare(const void *vp1, const void *vp2)
 {
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
     
     
-    int o = orientaciaBodu(p0, *p1, *p2);
+    int o = orientation(p0, *p1, *p2);
     if (o == 0)
-        return (vzdialenostBodov(p0, *p2) >= vzdialenostBodov(p0, *p1))? -1 : 1;
+        return (distSq(p0, *p2) >= distSq(p0, *p1))? -1 : 1;
     
     if(o == 2){
         return -1;
@@ -54,7 +54,7 @@ int porovnanieBodov(const void *vp1, const void *vp2)
     }
 }
 
-BOD * convexHull(BOD *v,  int *count){
+BOD * Convex_Hull(BOD *v,  int *count){
     int n = *count;
     int ymin = v[0].y;
     int min = 0;
@@ -71,14 +71,14 @@ BOD * convexHull(BOD *v,  int *count){
         }
     }
     
-    vymenBody(&v[0], &v[min]);
+    swap(&v[0], &v[min]);
     p0 = v[0];
     if(n > 1)
-        qsort(&v[1], n - 1, sizeof(BOD), porovnanieBodov);
+        qsort(&v[1], n - 1, sizeof(BOD), compare);
     m = 1;
     for(i = 1; i < n; i++)
     {
-        while((i < n - 1) && orientaciaBodu(v[0], v[i], v[i + 1]) == 0)
+        while((i < n - 1) && orientation(v[0], v[i], v[i + 1]) == 0)
             i++;
         v[m++] = v[i];
     }
@@ -92,7 +92,7 @@ BOD * convexHull(BOD *v,  int *count){
     m = 2;
     for(i = 3; i < n; i++)
     {
-        while(orientaciaBodu(stack[m-1], stack[m], v[i]) != 2)
+        while(orientation(stack[m-1], stack[m], v[i]) != 2)
             m--;
         stack[++m] = v[i];
     }
@@ -102,8 +102,8 @@ BOD * convexHull(BOD *v,  int *count){
     return stack;
 }
 
-double obvod(int npoints, BOD *v) {
-    double obvod = 0.0, dx, dy,x,y;
+double getDistance(int npoints, BOD *v) {
+    double distance = 0.0, dx, dy,x,y;
     int i;
     for (i = 0; i < npoints; ++i) {
         
@@ -115,10 +115,10 @@ double obvod(int npoints, BOD *v) {
         
         dy = pow(y,2);
         
-        obvod += sqrt(dx + dy);
+        distance += sqrt(dx + dy);
     }
     
-    return obvod;
+    return distance;
 }
 
 int main()
@@ -137,11 +137,11 @@ int main()
     
     count = n;
     
-    v = convexHull(v, &count);
+    v = Convex_Hull(v, &count);
     
-    double Obvod = obvod(count, v);
+    double perimeter = getDistance(count, v);
     
-    printf("%.3lf\n",Obvod);
+    printf("%.3lf\n",perimeter);
     
     return 0;
 }
