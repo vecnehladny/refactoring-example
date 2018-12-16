@@ -36,6 +36,11 @@ int vektor(BOD p1, BOD p2)
     return (int)(p1.x - p2.x)*(p1.x - p2.x) + ( int)(p1.y - p2.y)*(p1.y     - p2.y);
 }
 
+double vzdialenostBodov(int xs, int xms,int ys,int yms){
+    
+    return sqrt(pow(xs - xms,2) + pow(ys - yms,2));
+}
+
 int compare(const void *vp1, const void *vp2)
 {
     BOD *p1 = (BOD *)vp1;
@@ -105,22 +110,12 @@ BOD * convexHull(BOD *v,  int *count){
 double obvod(int pocetBodov, BOD *v) {
     
     double obvod = 0.0;
-    double dx;
-    double dy;
-    double x;
-    double y;
-    
     int i;
     
     for (i = 0; i < pocetBodov; ++i) {
         
-        x = v[i].x - v[(i+1)%pocetBodov].x;
-        y = v[i].y - v[(i+1)%pocetBodov].y;
-        
-        dx = pow(x,2);
-        dy = pow(y,2);
-        
-        obvod += sqrt(dx + dy);
+        obvod += vzdialenostBodov(v[i].x, v[(i+1)%pocetBodov].x,v[i].y,v[(i+1)%pocetBodov].y);
+    
     }
     
     return obvod;
