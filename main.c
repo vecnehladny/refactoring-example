@@ -25,11 +25,17 @@ void vymenBody(BOD *v1, BOD *v2) {
 
 }
 
-int orientaciaBodu(BOD p, BOD q, BOD r)
-{
+int orientaciaBodu(BOD p, BOD q, BOD r){
+    
     int val = (int)(q.y - p.y) * (r.x - q.x) - ( int)(q.x - p.x) * (r.y - q.y);
     if (val == 0) return 0;
-    return (val > 0)? 1: 2;
+    
+    if(val > 0){
+        return 1;
+    }
+    else {
+        return 2;
+    }
 }
 
 int vektor(BOD p1, BOD p2)
@@ -42,7 +48,7 @@ double vzdialenostBodov(int xs, int xms,int ys,int yms){
     return sqrt(pow(xs - xms,2) + pow(ys - yms,2));
 }
 
-int compare(const void *vp1, const void *vp2)
+int compare(void *vp1, void *vp2)
 {
     BOD *p1 = (BOD *)vp1;
     BOD *p2 = (BOD *)vp2;
